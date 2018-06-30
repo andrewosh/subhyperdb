@@ -90,6 +90,11 @@ SubHyperDB.prototype.createWriteStream = function (cb) {
   }
 }
 
+SubHyperDB.prototype.mount = function (key, path, opts, cb) {
+  // The other methods should handle the prefixes of the mount's nodes.
+  return this.db.mount(key, path, opts, cb) 
+}
+
 SubHyperDB.prototype._createPrefix = function () {
   var buf = Buffer.alloc(16)
   sodium.randombytes_buf(buf)
